@@ -15,6 +15,7 @@ void showMenu(){
     cout << "3. Exit" << endl;
     cout << "4. Mark task as completed" << endl;
     cout << "5. Save Tasks" << endl;
+    cout << endl;
 }
 
 // adds a new task to the vector
