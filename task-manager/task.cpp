@@ -15,29 +15,30 @@ void showMenu(){
     cout << "3. Exit" << endl;
     cout << "4. Mark task as completed" << endl;
     cout << "5. Save Tasks" << endl;
+    cout << "6. Delete Task" << endl;
     cout << endl;
 }
 
 // adds a new task to the vector
-void addTask(vector<Task>& tasks){
+void addTask(vector<Task>& tasks){ // pass vector by reference so that changes persist outside the function
 
-    Task newTask;
+    Task newTask; // create new task object
 
     cout << "Enter task title: " << endl;
 
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // clear input buffer to avoid issues with getline after cin
 
-    getline(cin, newTask.title);
+    getline(cin, newTask.title); // read entire line for task title, allowing for spaces
 
-    newTask.completed = false;
+    newTask.completed = false; // new tasks are not completed by default
 
-    tasks.push_back(newTask);
+    tasks.push_back(newTask); // add new task to vector
 
     cout << "Task added successfully." << endl;
 }
 
 // displays all tasks
-void viewTasks(const vector<Task>& tasks){
+void viewTasks(const vector<Task>& tasks){ 
 
     cout << "Tasks:" << endl;
 
@@ -49,7 +50,7 @@ void viewTasks(const vector<Task>& tasks){
 
         for(size_t i = 0; i < tasks.size(); i++){
 
-            cout << i + 1 << ". " << tasks[i].title;
+            cout << i + 1 << ". " << tasks[i].title; // display task number and title, i + 1 because we want to display task numbers starting from 1 instead of 0
 
             if(tasks[i].completed){
 
@@ -70,14 +71,14 @@ void completeTask(vector<Task>& tasks){
         return;
     }
 
-    int taskNumber;
+    int taskNumber; // variable to store user input for task number
 
     cout << "Enter the number of the task to mark as completed: ";
     cin >> taskNumber;
 
-    if(taskNumber > 0 && taskNumber <= tasks.size()){
+    if(taskNumber > 0 && taskNumber <= tasks.size()){ // check if task number is valid (greater than 0 and less than or equal to the number of tasks)
 
-        tasks[taskNumber - 1].completed = true;
+        tasks[taskNumber - 1].completed = true; // mark the specified task as completed, taskNumber - 1 because vector is 0-indexed but we want to display task numbers starting from 1
 
         cout << "Task marked as completed." << endl;
     }
@@ -133,3 +134,23 @@ void loadTasks(vector<Task>& tasks){
 
     }
 }
+
+void deleteTask(vector<Task>& tasks){
+        if(tasks.empty()){
+            cout << "No tasks available to delete." << endl;
+            return;
+        }
+
+        int taskNumber;
+        cout << "Enter the number of the task to delete: ";
+        cin >> taskNumber;
+
+        if(taskNumber > 0 && taskNumber <= tasks.size()){
+            tasks.erase(tasks.begin() + taskNumber - 1); //taskNumber - 1 because vector is 0-indexed but we want to display task numbers starting from 1
+            cout << "Task deleted successfully." << endl;
+        }
+        else{
+            cout << "Invalid task number." << endl;
+        }
+    }
+

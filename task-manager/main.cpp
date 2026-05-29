@@ -1,6 +1,5 @@
 #include <iostream>
 #include "task.h"
-#include "task.cpp"
 
 using namespace std;
 
@@ -8,7 +7,7 @@ int main(){
 
     vector<Task> tasks;
 
-    loadTasks(tasks); 
+    loadTasks(tasks);
 
     while(true){
 
@@ -20,20 +19,37 @@ int main(){
         cout << endl;
 
         if(choice == 1){
+
             addTask(tasks);
         }
         else if(choice == 2){
+
             viewTasks(tasks);
         }
         else if(choice == 3){
-            saveTasks(tasks); 
+
+            saveTasks(tasks);
+
             cout << "Exiting..." << endl;
+
             break;
         }
         else if(choice == 4){
+
             completeTask(tasks);
         }
+        else if(choice == 5){
+
+            saveTasks(tasks);
+
+            cout << "Tasks saved successfully." << endl;
+        }
+        else if(choice == 6){
+
+            deleteTask(tasks);
+        }
         else{
+
             cout << "Invalid option." << endl;
         }
 
