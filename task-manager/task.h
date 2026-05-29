@@ -23,4 +23,6 @@ void saveTasks(const vector<Task>& tasks);
 
 void loadTasks(vector<Task>& tasks);
 
+void deleteTask(vector<Task>& tasks);
+
 #endif
