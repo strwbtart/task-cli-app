@@ -51,11 +51,15 @@ void viewTasks(const vector<Task>& tasks){
 
         for(size_t i = 0; i < tasks.size(); i++){
 
-            cout << i + 1 << ". " << tasks[i].title; // display task number and title, i + 1 because we want to display task numbers starting from 1 instead of 0
+            cout << "[" << i + 1 << "] " << tasks[i].title; // display task number and title, i + 1 because we want to display task numbers starting from 1 instead of 0
 
             if(tasks[i].completed){
 
                 cout << " (Completed)";
+            }
+            else{
+
+                cout << " (Pending)";
             }
 
             cout << endl;
@@ -102,6 +106,7 @@ void saveTasks(const vector<Task>& tasks){
         outFile << tasks[i].title << "," << tasks[i].completed << endl; // writes out task title and completion status
     }
     outFile.close(); // closes the file
+    cout << "Tasks saved successfully." << endl;
 }
 
 // restores tasks from a file whenever program restarts, so that tasks are not lost when program is closed
