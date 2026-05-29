@@ -12,10 +12,11 @@ void showMenu(){
 
     cout << "1. Add Task" << endl;
     cout << "2. View Tasks" << endl;
-    cout << "3. Exit" << endl;
-    cout << "4. Mark task as completed" << endl;
-    cout << "5. Save Tasks" << endl;
-    cout << "6. Delete Task" << endl;
+    cout << "3. Complete Task" << endl;
+    cout << "4. Delete Task" << endl;
+    cout << "5. Edit Task" << endl;
+    cout << "6. Save Tasks" << endl;
+    cout << "7. Exit" << endl;
     cout << endl;
 }
 
@@ -153,4 +154,25 @@ void deleteTask(vector<Task>& tasks){
             cout << "Invalid task number." << endl;
         }
     }
+
+void editTask(vector<Task>& tasks){
+    if(tasks.empty()){
+        cout << "No tasks available to edit." << endl;
+        return;
+    }
+    else{
+        int taskNumber;
+        cout << "Enter the number of the task to edit: ";
+        cin >> taskNumber;
+        if(taskNumber > 0 && taskNumber <= tasks.size()){
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            string newTitle;
+            cout << "Enter the new title for the task: ";
+            getline(cin, newTitle);
+            tasks[taskNumber -1].title = newTitle; // makes sure vector starts at 0 but task number 1
+            cout << "Task updated successfully." << endl;
+        }
+    }
+}
 

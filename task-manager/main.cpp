@@ -28,25 +28,23 @@ int main(){
         }
         else if(choice == 3){
 
-            saveTasks(tasks);
-
-            cout << "Exiting..." << endl;
-
-            break;
+            completeTask(tasks);
         }
         else if(choice == 4){
 
-            completeTask(tasks);
+          deleteTask(tasks);
         }
         else if(choice == 5){
 
-            saveTasks(tasks);
-
-            cout << "Tasks saved successfully." << endl;
+            editTask(tasks);
         }
         else if(choice == 6){
 
-            deleteTask(tasks);
+            saveTasks(tasks);
+        }
+        else if(choice == 7){
+            cout << "Exiting..." << endl;
+            break;
         }
         else{
 

@@ -25,4 +25,6 @@ void loadTasks(vector<Task>& tasks);
 
 void deleteTask(vector<Task>& tasks);
 
+void editTask(vector<Task>& tasks);
+
 #endif
