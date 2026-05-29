@@ -15,8 +15,7 @@ void showMenu(){
     cout << "3. Complete Task" << endl;
     cout << "4. Delete Task" << endl;
     cout << "5. Edit Task" << endl;
-    cout << "6. Save Tasks" << endl;
-    cout << "7. Exit" << endl;
+    cout << "6. Exit" << endl;
     cout << endl;
 }
 
@@ -34,6 +33,7 @@ void addTask(vector<Task>& tasks){ // pass vector by reference so that changes p
     newTask.completed = false; // new tasks are not completed by default
 
     tasks.push_back(newTask); // add new task to vector
+    saveTasks(tasks); // save tasks after adding a new task to update the file
 
     cout << "Task added successfully." << endl;
 }
@@ -86,6 +86,7 @@ void completeTask(vector<Task>& tasks){
         tasks[taskNumber - 1].completed = true; // mark the specified task as completed, taskNumber - 1 because vector is 0-indexed but we want to display task numbers starting from 1
 
         cout << "Task marked as completed." << endl;
+        saveTasks(tasks); // save tasks after marking a task as completed to update the file
     }
     else{
 
@@ -137,6 +138,7 @@ void loadTasks(vector<Task>& tasks){
         loadedTask.completed = completed;
 
         tasks.push_back(loadedTask); // add loaded task to vector
+        cout << "Tasks loaded successfully." << endl;
 
     }
 }
@@ -153,6 +155,7 @@ void deleteTask(vector<Task>& tasks){
 
         if(taskNumber > 0 && taskNumber <= tasks.size()){
             tasks.erase(tasks.begin() + taskNumber - 1); //taskNumber - 1 because vector is 0-indexed but we want to display task numbers starting from 1
+            saveTasks(tasks); // save tasks after deletion to update the file
             cout << "Task deleted successfully." << endl;
         }
         else{
@@ -165,7 +168,6 @@ void editTask(vector<Task>& tasks){
         cout << "No tasks available to edit." << endl;
         return;
     }
-    else{
         int taskNumber;
         cout << "Enter the number of the task to edit: ";
         cin >> taskNumber;
@@ -176,8 +178,11 @@ void editTask(vector<Task>& tasks){
             cout << "Enter the new title for the task: ";
             getline(cin, newTitle);
             tasks[taskNumber -1].title = newTitle; // makes sure vector starts at 0 but task number 1
+            saveTasks(tasks);
             cout << "Task updated successfully." << endl;
         }
+        else{
+            cout << "Invalid task number." << endl;
+        }
     }
-}
 
