@@ -108,6 +108,7 @@ void saveTasks(const vector<Task>& tasks){
     }
     outFile.close(); // closes the file
     cout << "Tasks saved successfully." << endl;
+    cout << endl;
 }
 
 // restores tasks from a file whenever program restarts, so that tasks are not lost when program is closed
@@ -139,6 +140,7 @@ void loadTasks(vector<Task>& tasks){
 
         tasks.push_back(loadedTask); // add loaded task to vector
         cout << "Tasks loaded successfully." << endl;
+        cout << endl;
 
     }
 }
