@@ -32,7 +32,7 @@ int main(){
         }
         else if(choice == 4){
 
-          deleteTask(tasks);
+            deleteTask(tasks);
         }
         else if(choice == 5){
 
@@ -41,9 +41,9 @@ int main(){
         else if(choice == 6){
 
             saveTasks(tasks);
-        }
-        else if(choice == 7){
+
             cout << "Exiting..." << endl;
+
             break;
         }
         else{
